@@ -1,0 +1,44 @@
+Initialize Variables:
+   current Power = 'p' (Abhimanyu's initial power).
+   skips Left = 'a' (number of times Abhimanyu can skip fighting).
+   recharges Left = 'b' (number of times Abhimanyu can recharge his power).
+
+2. Iterate Through Each Circle:
+    For 'i' from 0 to 10 (representing the 11 circles):
+     'enemy Power' = 'enemy Powers[i]' (power of the enemy in the current circle).
+
+3. Check If Current Power is Sufficient:
+    If current Power < enemy Power:
+    If skips Left > 0:
+       Decrease 'skips Left' by 1.
+        Continue to the next circle (skip the current battle).
+     Else if 'recharges Left > 0':
+        Decrease recharges Left` by 1.
+        Reset 'current Power' to 'p' (recharge to full power).
+        Continue to the next circle.
+     Else:
+        Return 'false' (Abhimanyu cannot cross the Chakravyuha).
+
+4. Battle the Enemy:
+   Decrease 'current Power' by 'enemy Power'.
+
+5. Handle Special Enemies (k3 and k7):
+    If 'i == 2' or 'i == 6' (special enemies):
+     regenerated Power = enemy Powers[i] / 2 (enemy regenerates to half power).
+      If current Power < regenerated Power:
+        If skips Left > 0:
+          Decrease skips Left by 1.
+          Continue to the next circle (skip the regenerated battle).
+        Else if recharges Left > 0:
+          Decrease recharges Left by 1.
+          Reset current Power to 'p' (recharge to full power).
+          Continue to the next circle.
+        Else:
+          Return false (Abhimanyu cannot cross the Chakravyuha).
+
+6. Update Power After Battle:
+    If current Power < 0:
+      Return "false" (Abhimanyu is defeated).
+
+7. End of Loop:
+    If Abhimanyu successfully crosses all 11 circles, return "true".
